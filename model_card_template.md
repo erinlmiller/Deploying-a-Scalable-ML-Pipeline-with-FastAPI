@@ -15,7 +15,7 @@ The training data from the 1994 US Census was provided by UC Irvine Machine Lear
 The evaluation dataset is comprised of 20% of the data used for training. 
 
 ## Metrics
-Precision: 0.7427; Recall: 0.6467; F1: 0.6914
+Precision: 0.7448; Recall: 0.6429; F1: 0.6901
 
 ## Ethical Considerations
 The dataset contains sensitive information such as race, sex, income, education, and workclass, but it is anonymized. The dataset is intended to be used for educational purposes only.

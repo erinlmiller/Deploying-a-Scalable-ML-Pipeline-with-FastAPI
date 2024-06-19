@@ -12,8 +12,8 @@ from ml.model import (
     save_model,
     train_model
 )
-# load the cencus.csv data
-project_path = "/home/erin/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+# load the census.csv data
+project_path = ""
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path)
 data = pd.read_csv(data_path)

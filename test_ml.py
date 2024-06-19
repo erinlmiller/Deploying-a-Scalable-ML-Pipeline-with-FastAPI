@@ -1,28 +1,52 @@
 import pytest
-# TODO: add necessary import
-
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
-    """
-    # add description for the first test
-    """
-    # Your code here
-    pass
+import pandas as pd
+import os
+from sklearn.model_selection import train_test_split
 
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
+@pytest.fixture(scope="session")
+def data():
     """
-    # add description for the second test
+    # create read_data definition to reuse while loading data
     """
-    # Your code here
-    pass
+    data_path = './data/census.csv'
+    df = pd.read_csv(data_path)
+    return df
 
 
-# TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_column_count(data):
     """
-    # add description for the third test
+    # check for 15 expected columns
     """
-    # Your code here
-    pass
+    assert data.shape[1] == 15
+
+
+def test_record_count(data):
+    """
+    # check for expected record count of 32,561
+    """
+    assert data.shape[0] == 32561
+
+
+def test_training_size(data):
+    """
+    # check that training dataset size is 80% of total records
+    """
+    train, test = train_test_split(data, test_size=0.2, random_state=42)
+
+    train_size = len(train)
+    exp_train_size = 26048
+
+    assert train_size == exp_train_size
+
+
+def test_testing_size(data):
+    """
+    # check that testing dataset size is 20% of total records
+    """
+    train, test = train_test_split(data, test_size=0.2, random_state=42)
+
+    test_size = len(test)
+    exp_test_size = 6513
+
+    assert test_size == exp_test_size
